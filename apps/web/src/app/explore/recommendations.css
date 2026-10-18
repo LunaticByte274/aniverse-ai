@@ -1,0 +1,28 @@
+/* ANIVERSE AI personalized recommendation panel */
+.recommend-panel{margin:30px 0 44px;padding:clamp(20px,3vw,32px);border:1px solid #34294f;border-radius:22px;background:radial-gradient(ellipse at top right,#261c43 0%,#12111e 54%,#0e0d18 100%);color:#f5f3ff;box-shadow:0 18px 55px #0002}
+.recommend-heading{display:flex;align-items:flex-start;gap:15px;margin-bottom:24px}
+.recommend-icon{display:grid;place-items:center;flex:0 0 48px;height:48px;border-radius:15px;color:#e0d3ff;background:linear-gradient(135deg,#8056e8,#372457)}
+.recommend-eyebrow{display:flex;align-items:center;gap:7px;color:#bba3ff;font-size:10px;font-weight:800;letter-spacing:1.6px}
+.recommend-heading h2{font-size:clamp(22px,3vw,30px);letter-spacing:-.8px;margin:8px 0}
+.recommend-heading p{color:#aaa4c2;font-size:13px;line-height:1.7;margin:0;max-width:650px}
+.recommend-tastes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.recommend-taste{display:flex;flex-direction:column;gap:7px;text-align:left;padding:15px;border:1px solid #302b45;border-radius:13px;background:#151321;color:#eee9ff;cursor:pointer;transition:border-color .18s,background .18s;min-width:0}
+.recommend-taste:hover{border-color:#8063d2}
+.recommend-taste.selected{border-color:#a58aff;background:#261d3b;box-shadow:inset 0 0 0 1px #a58aff33}
+.recommend-taste strong{font-size:13px}
+.recommend-taste span{color:#a7a0c0;font-size:11px;line-height:1.55}
+.recommend-bottom{display:grid;grid-template-columns:1fr 1.4fr;gap:12px;margin-top:18px}
+.recommend-watched{display:grid;gap:8px;color:#b8b1d1;font-size:11px}
+.recommend-watched input,.recommend-watched select{width:100%;min-width:0;background:#171524;color:#f2edff;border:1px solid #343049;border-radius:9px;padding:12px;font:inherit;font-size:12px}
+.recommend-submit{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;margin-top:18px;border:0;border-radius:11px;padding:14px 18px;background:linear-gradient(100deg,#8158e7,#a177f6);color:white;font-weight:800;font-size:13px;cursor:pointer}
+.recommend-submit:disabled{opacity:.7;cursor:wait}
+.recommend-spoiler-note{display:flex;align-items:center;gap:7px;margin-top:12px;color:#8f89a9;font-size:10px}
+.recommend-spoiler-note svg{flex-shrink:0;color:#b7a0ff}
+.recommend-error{margin-top:14px;padding:12px;border:1px solid #78424b;border-radius:10px;color:#ffb7c0;font-size:12px;white-space:pre-wrap}
+.recommend-results{margin-top:22px;padding-top:20px;border-top:1px solid #302a45}
+.recommend-results-title{display:flex;align-items:center;gap:9px;color:#c7b4ff}
+.recommend-results-title h3{margin:0;color:#f4efff;font-size:17px}
+.recommend-answer{margin-top:14px;padding:18px;border:1px solid #2d2841;border-radius:12px;background:#11101b;color:#e3ddef;font-size:13px;line-height:1.85;white-space:pre-wrap;overflow-wrap:anywhere}
+.recommend-reset{margin-top:12px;border:1px solid #4a3c68;border-radius:9px;background:transparent;color:#c8b7ff;padding:10px 13px;font-size:12px;cursor:pointer}
+@media(max-width:760px){.recommend-tastes{grid-template-columns:repeat(2,minmax(0,1fr))}.recommend-bottom{grid-template-columns:1fr}}
+@media(max-width:460px){.recommend-tastes{grid-template-columns:1fr}.recommend-heading{gap:11px}.recommend-icon{flex-basis:40px;height:40px}}

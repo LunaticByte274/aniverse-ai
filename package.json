@@ -1,0 +1,19 @@
+{
+  "name": "aniverse-ai",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "yarn workspace @aniverse/web dev",
+    "build": "yarn workspace @aniverse/web build",
+    "db:generate": "yarn workspace @aniverse/web prisma:generate",
+    "db:migrate": "yarn workspace @aniverse/web prisma:migrate",
+    "db:studio": "yarn workspace @aniverse/web prisma:studio"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "packageManager": "yarn@4.1.0"
+}

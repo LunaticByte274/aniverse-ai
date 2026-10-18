@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum WatchStatus {
+  PLANNING
+  WATCHING
+  COMPLETED
+  ON_HOLD
+  DROPPED
+  REWATCHING
+}
+
+enum QueuePriority {
+  LOW
+  NORMAL
+  HIGH
+  MUST_WATCH
+}
+
+model Anime {
+  id                String          @id @default(cuid())
+  title             String
+  englishTitle      String?
+  nativeTitle       String?
+  synopsis          String?
+  coverImage        String?
+  bannerImage       String?
+  genres            String          @default("")
+  seasonCount       Int             @default(1)
+  totalEpisodes     Int?
+  status            WatchStatus     @default(PLANNING)
+  priority          QueuePriority   @default(NORMAL)
+  queuePosition     Int             @default(0)
+  currentSeason     Int             @default(1)
+  currentEpisode    Int             @default(0)
+  userRating        Int?
+  personalNotes     String?
+  source            String          @default("MANUAL")
+  sourceId          String?
+  malId             Int?
+  rewatchCount      Int             @default(0)
+  startedAt         DateTime?
+  completedAt       DateTime?
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  episodeLogs       EpisodeLog[]
+
+  @@unique([source, sourceId])
+  @@index([status, queuePosition])
+  @@index([title])
+}
+
+model EpisodeLog {
+  id             String   @id @default(cuid())
+  animeId        String
+  anime          Anime    @relation(fields: [animeId], references: [id], onDelete: Cascade)
+  seasonNumber   Int      @default(1)
+  episodeNumber  Int
+  watchedAt      DateTime @default(now())
+  rating         Int?
+  notes          String?
+  rewatch        Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  @@index([animeId, watchedAt])
+  @@index([animeId, seasonNumber, episodeNumber])
+}
